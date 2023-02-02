@@ -112,7 +112,7 @@ class Tech:
                 zones = result['zones']['elements']
                 if len(zones) > 0:
                     _LOGGER.debug("Updating zones cache for controller: " + module_udid)    
-                    zones = list(filter(lambda e: e['zone']['zoneState'] != "zoneUnregistered", zones))
+                    zones = list(filter(lambda e: e['zone']['zoneState'] != "zoneUnregistered" and e['zone']['zoneState'] != "zoneOff", zones))
                     for zone in zones:
                         self.modules[module_udid]['zones'][zone['zone']['id']] = zone
                 self.modules[module_udid]['last_update'] = now
